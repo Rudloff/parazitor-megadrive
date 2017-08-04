@@ -33,16 +33,16 @@ static void initGame()
     gameStarted = TRUE;
 }
 
-static void joyHandler(u16 joy, /*@unused@*/ u16 changed, u16 state)
+static void joyHandler(u16 joy, u16 changed, /*@unused@*/ u16 state)
 {
     if (joy == JOY_1)
     {
-        if (state == BUTTON_START && gameStarted == FALSE)
+        if (changed == BUTTON_START && gameStarted == FALSE)
         {
             initGame();
         }
-        if (state == BUTTON_RIGHT || state == BUTTON_LEFT || state == BUTTON_DOWN || state == BUTTON_UP) {
-            direction = state;
+        if (changed == BUTTON_RIGHT || changed == BUTTON_LEFT || changed == BUTTON_DOWN || changed == BUTTON_UP) {
+            direction = changed;
         }
     }
 }
